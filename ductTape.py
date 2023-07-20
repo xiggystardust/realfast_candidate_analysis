@@ -4,7 +4,7 @@ To get things going, create a .csv file named info.csv with the following format
 
 observation,targetName,phaseName,phaseCenter,arrConfig
 XXX-XXX.sbXXXXXXXX.ebXXXXXXXX.XXXXX.XXXXXXXXXX,XXXXX,XXXXX+XXXX,J2000 XXhXXmXX.XXXX XXdXXmXX.XXXX,X
-XXXXXX.sbXXXXXXXX.ebXXXXXXXX.XXXXX.XXXXXXXXXX,XXXXX,XXXXX+XXXX,J2000 XXhXXmXX.XXXX XXdXXmXX.XXXX,X
+XXXXXX.sbXXXXXXXX.ebXXXXXXXX.XXXXX.XXXXXXXXXX,XXXXX,XXXXX-XXXX,J2000 XXhXXmXX.XXXX XXdXXmXX.XXXX,X
 XXXXXX.X.sbXXXXXXXX.ebXXXXXXXX.XXXXX.XXXXXXXXXX,XXXXX,XXXXX+XXXX,J2000 XXhXXmXX.XXXX XXdXXmXX.XXXX,X
 ...
 
@@ -15,8 +15,8 @@ Keep in mind that the array configuration IS case sensitive. Example: 'A', 'CnB'
 
 When you have your .csv file, place this script and the .csv file in the same directory that contains all your observation subdirectories.
 Be sure that your observation subdirectories and .ms files match the name of the observation, which they should if using NRAO's provided wget commands during download.
-If you want, you can specify a naming convention and output directory below. 
-Otherwise, the default convention will be used and everything will be output in an 'output' directory found in the parent of where the script is placed.
+If you want, you can specify a different output directory below. 
+Otherwise, the default convention will be used and everything will be output in an 'output' directory found where the script is placed.
 
 Happy imaging!
 """
