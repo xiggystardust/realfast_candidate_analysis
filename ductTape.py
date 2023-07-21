@@ -15,7 +15,7 @@ Keep in mind that the array configuration IS case sensitive. Example: 'A', 'CnB'
 
 When you have your .csv file, place this script and the .csv file in the same directory that contains all your observation subdirectories.
 Be sure that your observation subdirectories and .ms files match the name of the observation, which they should if using NRAO's provided wget commands during download.
-If you want, you can specify a different output directory below. 
+If you want, you can specify a different output directory below. It is surrounding by two lines of #
 Otherwise, the default convention will be used and everything will be output in an 'output' directory found where the script is placed.
 
 Happy imaging!
@@ -35,13 +35,15 @@ import subprocess
 
 print("\nOpening and reading info.csv ...")
 dirs = next(os.walk('.'))[1]
+if 'output' not in dirs:
+	subprocess.run(['mkdir','output'])
 file = open('info.csv','r',newline='')
 dictReader = csv.DictReader(file)
 myDict = {}
 for item in dictReader:
 	myDict[item['observation']] = item
 print("Creating output file ...")
-outputFile = open('output.csv','w',newline='')
+outputFile = open('output/output.csv','w',newline='')
 outFieldNames = ['rmsNatural','rmsBriggs','noiseMicroJy','briggsNoiseMicroJy','rmsMicroToNoiseRatioNatural','rmsMicroToNoiseRatioBriggs','SEFD','natConfLevel','briggsConfLevel','antennaNum','arrConfig','repFreqGHz','totBandGHz','timeOnSource']
 dictWriter = csv.DictWriter(outputFile,fieldnames=outFieldNames)
 dictWriter.writeheader()
@@ -62,7 +64,9 @@ for key, value in myDict.items():
 # Here we assign our most important variables. This is also where the output directory can be changed if desired.
 	
 	resultName=key
-	resultDir='../output/' # Be sure to add the tailing /
+#################################################################################################################################################
+	resultDir='../output/' # This is where to change the output! Be sure to add the tailing /
+#################################################################################################################################################
 	msFile=key+'.ms'
 	targetName=value['targetName']
 	phaseName=value['phaseName']
@@ -353,4 +357,4 @@ for key, value in myDict.items():
 
 file.close()
 outputFile.close()
-print("\n\n\nPipeline complete. Output files can be found in the assinged output directory.")
+print("\n\n\nPipeline complete. Output files can be found in the assigned output directory.")
