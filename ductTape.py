@@ -122,7 +122,7 @@ for key, value in myDict.items():
 				image_size_in_pixels_final = int(ham)
 				break
 
-	imWidth = int(20 / cellsize)
+	imWidth = 15
 	midpoint = int(image_size_in_pixels_final/2)
 	bottomLeft = [midpoint-imWidth,midpoint-imWidth]
 	topRight = [midpoint+imWidth,midpoint+imWidth]
@@ -153,7 +153,7 @@ for key, value in myDict.items():
 			print("Extracting rms value and creating raster and contour map images ...")
 			rmsNatural = imstat(imagename=outname+'.residual')['rms'][0].item()
 			casaviewer.imview(raster={'file':outname+'.image','scaling':0,'range':[0,rmsNatural*10],'colormap':'Greyscale 2','colorwedge':True},out={'file':outname+'.png','format':'png'})
-			casaviewer.imview(contour={'file':outname+'.image','levels':[3,6,9,12,15],'base':0,'unit':rmsNatural},zoom={'blc':bottomLeft,'trc':topRight,'coord':'pixel'},out=outname+'_contour.png')
+			casaviewer.imview(contour={'file':outname+'.image','levels':[-3,3,6,9,12,15],'base':0,'unit':rmsNatural},zoom={'blc':bottomLeft,'trc':topRight,'coord':'pixel'},out=outname+'_contour.png')
 			subprocess.run(['convert','-negate',outname+'.png',outname+'.png'])
 			subprocess.run(['convert','-negate',outname+'_contour.png',outname+'_contour.png'])
 			print("Natural weighting complete.")
@@ -167,7 +167,7 @@ for key, value in myDict.items():
 			print("Extracting rms value and creating raster and contour map images ...")
 			rmsBriggs = imstat(imagename=outname+'.residual')['rms'][0].item()
 			casaviewer.imview(raster={'file':outname+'.image','scaling':0,'range':[0,rmsNatural*10],'colormap':'Greyscale 2','colorwedge':True},out={'file':outname+'.png','format':'png'})
-			casaviewer.imview(contour={'file':outname+'.image','levels':[3,6,9,12,15],'base':0,'unit':rmsNatural},zoom={'blc':bottomLeft,'trc':topRight,'coord':'pixel'},out=outname+'_contour.png')
+			casaviewer.imview(contour={'file':outname+'.image','levels':[-3,3,6,9,12,15],'base':0,'unit':rmsNatural},zoom={'blc':bottomLeft,'trc':topRight,'coord':'pixel'},out=outname+'_contour.png')
 			subprocess.run(['convert','-negate',outname+'.png',outname+'.png'])
 			subprocess.run(['convert','-negate',outname+'_contour.png',outname+'_contour.png'])
 			print("Briggs weighting complete.")
