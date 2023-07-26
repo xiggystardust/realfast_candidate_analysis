@@ -45,9 +45,9 @@ for item in dictReader:
 	myDict[item['observation']] = item
 print("Creating or accessing output file ...")
 files = next(os.walk('output/'))[2]
+outFieldNames = ['rmsNatural','rmsBriggs','noiseMicroJy','briggsNoiseMicroJy','rmsMicroToNoiseRatioNatural','rmsMicroToNoiseRatioBriggs','SEFD','natConfLevel','briggsConfLevel','antennaNum','arrConfig','repFreqGHz','totBandGHz','timeOnSource']
 if 'output.csv' not in files:
 	outputFile = open('output/output.csv','w',newline='')
-	outFieldNames = ['rmsNatural','rmsBriggs','noiseMicroJy','briggsNoiseMicroJy','rmsMicroToNoiseRatioNatural','rmsMicroToNoiseRatioBriggs','SEFD','natConfLevel','briggsConfLevel','antennaNum','arrConfig','repFreqGHz','totBandGHz','timeOnSource']
 	dictWriter = csv.DictWriter(outputFile,fieldnames=outFieldNames)
 	dictWriter.writeheader()
 	outputFile.close()
@@ -362,7 +362,7 @@ for key, value in myDict.items():
 			msmd.close()
 		except Exception as Argument:
 			print("\n\noh NO! An error has occurred. Please check info.csv and note where during pipeline the error occurred. Error sent to error.txt")
-			with open('error.txt','a') as er:
+			with open('../error.txt','a') as er:
 				er.write(str(Argument))
 		os.chdir("../")
 
