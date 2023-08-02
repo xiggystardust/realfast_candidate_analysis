@@ -83,7 +83,7 @@ for key, value in myDict.items():
 # Now we run listobs and reset the flags
 
 			print("\n\nRunning listobs. Resetting flag manager.")
-			
+			subprocess.run(['mkdir',resultDir+resultName+'/'])
 			listobs(vis=msFile,listfile=resultDir+resultName+'/'+resultName+'.txt', overwrite=True)
 			flagmanager(vis=msFile,mode='restore',versionname='main')
 		
