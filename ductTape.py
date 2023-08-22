@@ -259,6 +259,7 @@ for key, value in myDict.items():
 	# Else if the furthest west is equal or longer than the furthest east, and if the furthest north is longest, then this is a hybrid. Assign configuration accordingly to west.
 	# Else if the furthest north is longer than the furthest east, then this is a hybrid. Assign configuration according to east.
 
+			hybConfig = {'D':'DnC','C':'CnB','B':'BnA'}
 			if arrConfig == '':
 				print("Array configuration not found. Beginning array configuration algorithm ...")
 				stations = msmd.antennastations()
@@ -314,9 +315,7 @@ for key, value in myDict.items():
 							if maxE < value:
 								maxE = value
 								break   
-						arrConfig = antIds[maxE]        
-				
-				hybConfig = {'D':'DnC','C':'CnB','B':'BnA'}
+						arrConfig = antIds[maxE]
 		
 			else:
 				print("Array configuration found. Proceeding ...")
