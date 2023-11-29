@@ -1,5 +1,14 @@
 """
 Welcome to the Duct Taped Pipeline!
+
+This program performs the following tasks autonomously on a list observations:
+Flags, cleans, and images VLA data in briggs and natural weighting
+Performs observed and expected RMS noise calculations
+Finds the confusion level
+Determines the array configuration
+Outputs image and contour map pngs
+Finds the association probability of FRB candidates with background persistent sources (not yet implemented)
+
 To get things going, create a .csv file named info.csv with the following format:
 
 observation,targetName,phaseName,phaseCenter,arrConfig
